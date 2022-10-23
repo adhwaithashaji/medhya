@@ -3,7 +3,7 @@ session_start();
 require("../php/connect.php");
 $email=$_SESSION['email'];
 $sql="select * from registration where email='$email'";
-echo $sql;
+// echo $sql;
 $res=select($sql);
 $user=mysqli_fetch_assoc($res);
 ?>
@@ -251,7 +251,7 @@ $user=mysqli_fetch_assoc($res);
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="php/logout.php">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>

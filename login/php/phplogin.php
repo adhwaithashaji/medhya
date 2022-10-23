@@ -28,12 +28,40 @@ if (isset($_POST['login'])) {
                     <?php                        
                        
                     } else if ($usertype == 2) {
-                        echo "Tailors";
-                    } else if ($usertype == 3) {
+                          ?>
+                        <script>
+                            alert("User");
+                             window.location.replace("../../tailor/");
+                        </script>
+                    <?php                        
+                       
+                    }
+                    else if ($usertype == 0) {
+                          ?>
+                        <script>
+                            alert("User");
+                             window.location.replace("../../admin/");
+                        </script>
+                    <?php                        
+                       
+                    }
+                     else if ($usertype == 3) {
 
-                        echo "Organisation";
+                          ?>
+                        <script>
+                            alert("User");
+                             window.location.replace("../../textile/");
+                        </script>
+                    <?php                        
+                       
                     } else if ($usertype == 4) {
-                        echo "Textiles";
+                         ?>
+                        <script>
+                            alert("User");
+                             window.location.replace("../../organization/");
+                        </script>
+                    <?php                        
+                       
                     } else {
                         echo "Invalid Usertype";
                     }

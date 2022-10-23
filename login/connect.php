@@ -21,6 +21,21 @@ function select($sql)
     return False;
 }
 
+
+function select1($sql)
+{
+
+  global $conn;
+  $res = mysqli_query($conn, $sql);
+  if ($res)
+  {
+    $r=mysqli_fetch_assoc($res);
+    return $r;
+  }
+  else
+    return False;
+}
+
 function insert()
 {
   global $conn;
