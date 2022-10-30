@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php 
+
+require("../php/connect.php");
+?>
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -75,7 +80,7 @@
                         <ul>
                             <li><a href="#">User</a></li>
                             <li><a href="reg/reg2.html">Textiles</a></li>
-                            <li><a href="reg/reg3.html">Organisation</a></li>
+                            <!-- <li><a href="reg/reg3.html">Organisation</a></li> -->
                             <li><a href="reg/reg4.html">Tailors</a></li>
                         </ul>
                     </li>
@@ -114,7 +119,7 @@
                             <img src="assets\img/h1_hero1.png" height="550px" width="350px" alt="Sample image">
                         </div>
                         <div class="col-md-8">
-                            <form>
+                            <form action="php/phpuserreg.php" method="POST">
 
                                 <div class="row pt-3">
                                     <div class="form-group col-md-6">
@@ -148,9 +153,12 @@
                                     <div class="form-group col-md-4">
                                         <label for="inputEmail4" class="labelName">User Type</label>
                                         <select name="usertype" id="" class="form-select">
-                                            <option disabled selected> -- Select Usertype --</option>
-                                            <option>Customer</option>
-                                            <option>Tailor</option> 
+                                            <option disabled selected> -- Select Usertype -- </option>
+                                            <option value="1">Individual User</option>
+                                            <option value="3">Organization</option> 
+                                             
+
+
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
@@ -173,23 +181,28 @@
                                 <div class="row pt-3">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4" class="labelName">District</label>
-                                        <select name="" id="distid" class="form-select">
-                                            <option>--Select District</option>
-                                            <option>ernakulam</option>
-                                            <option>thiruvanthapuram</option>
-                                            <option>kollam</option>
-                                            <option>alappuzha</option>
-                                            <option>idukki</option> 
+                                        <select name="district" id="distid" class="form-select">
+                                            <option selected disabled>--Select District--</option>
+                                            <?php 
+
+                                            $rr=select("select * from district;");
+                                            while($row=mysqli_fetch_assoc($rr))
+                                            {
+                                                ?>
+                                            <option value="<?php echo $row['distid'];?>"><?php echo $row['district'];?></option>
+                                            <?php 
+                                                }
+                                            ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4" class="labelName">City</label>
-                                        <select name="" id="" class="form-select">
-                                            <option>-- Select City --</option>
+                                        <select name="city" id="" class="form-select">
+                                            <option selected disabled>-- Select City --</option>
                                             <option>kothamangalam</option>
-                                            <option>ollampara</option>
-                                            <option>kuthiravattam</option>
-                                            <option>paikullam</option>
+                                            <option>muvatupuzha</option>
+                                            <option>perumbavoor</option>
+                                            <option>thodupuzha</option>
                                         </select>
                                     </div>
                                     
@@ -199,13 +212,13 @@
                                 <div class="row pt-3">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4" class="labelName">Address</label>
-                                        <input type="text" class="form-control" id="inputEmail4" placeholder="Address">
+                                        <input type="text" name="address" class="form-control" id="inputEmail4" placeholder="Address">
                                     </div>
 
 
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4" class="labelName">Pincode</label>
-                                        <input type="text" class="form-control" id="inputEmail4" placeholder="Pincode">
+                                        <input type="text" name="pincode" class="form-control" id="inputEmail4" placeholder="Pincode">
 
                                     </div>
 
@@ -214,13 +227,13 @@
                                 <div class="row pt-3">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4" class="labelName">Password</label>
-                                        <input type="password" class="form-control" id="inputEmail4" placeholder="Password">
+                                        <input type="password" name="password1" class="form-control" id="inputEmail4" placeholder="Password">
                                     </div>
 
 
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4" class="labelName">Confirm Password</label>
-                                        <input type="password" class="form-control" id="inputEmail4" placeholder="Re enter your Password">
+                                        <input type="password" name="password2" class="form-control" id="inputEmail4" placeholder="Re enter your Password">
 
                                     </div>
 
@@ -234,10 +247,6 @@
                                     </div>
 
                                 </div>
-
-
-
-
 
 
 
@@ -263,7 +272,7 @@
     <footer id="footer">
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>Lonely</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>Medhya</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->

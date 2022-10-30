@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "Medhya");
+$conn = mysqli_connect("localhost", "root", "", "medhya");
 
 // Check connection
 if ($conn->connect_errno) {
@@ -21,9 +21,14 @@ function select($sql)
     return False;
 }
 
-function insert()
+function insert($sql)
 {
-  global $conn;
+   global $conn;
+  $res = mysqli_query($conn, $sql);
+  if ($res)
+    return True;
+  else
+    return False;
 }
 
 function getrows($sql)
